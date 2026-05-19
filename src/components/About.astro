@@ -1,0 +1,53 @@
+---
+import { social } from "../data/portfolio";
+import { Image } from "astro:assets";
+import jeevanPhoto from "../assets/jeevan-photo.png";
+---
+
+<section id="about" class="reveal scroll-mt-24 border-b border-border py-16 sm:py-24">
+  <div class="grid gap-12 sm:gap-16 sm:grid-cols-[0.8fr_1.5fr] items-start">
+    
+    <div>
+      <h2 class="font-display text-4xl sm:text-5xl font-semibold text-ink">About</h2>
+      
+      <div class="mt-8 relative aspect-[4/5] w-full max-w-xs mx-auto sm:mx-0 overflow-hidden rounded-2xl border border-border shadow-md grayscale-[30%] hover:grayscale-0 transition-all duration-500">
+        <Image 
+          src={jeevanPhoto} 
+          alt="Jeevan Kumar" 
+          class="w-full h-full object-cover object-top"
+          width={300}
+          height={375}
+        />
+        <!-- Subtle noise overlay over the photo itself -->
+        <div class="absolute inset-0 bg-amber-light mix-blend-overlay opacity-50 pointer-events-none"></div>
+      </div>
+    </div>
+
+    <div class="space-y-6 text-xl leading-8 text-ink/80 mt-2 sm:mt-4">
+      <p>
+        I've been writing code since 2020 — first as a founding engineer at a startup, then at a
+        no-code AI platform, now mostly for myself.
+      </p>
+      <p>
+        I grew up in Saharsa, Bihar, moved to Punjab for my studies, and somewhere along the way
+        realized I'd rather build things I own than just things I'm paid to build. JaapMitra is
+        the first one. More are coming.
+      </p>
+      <p>
+        Outside of code — I'm training for a half marathon, slowly getting serious about it. I
+        shoot on an iPhone 15 Pro Max and document whatever feels worth remembering on <a
+          href={social.becomingjeevan}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-ink font-medium underline decoration-amber/40 underline-offset-4 hover:decoration-amber transition-colors"
+          >Becoming Jeevan</a
+        > — a project about living intentionally, one chapter at a time.
+      </p>
+      <p>
+        I like building things that feel complete. Apps that work offline. Products that don't
+        need an account. Code that ships.
+      </p>
+    </div>
+    
+  </div>
+</section>

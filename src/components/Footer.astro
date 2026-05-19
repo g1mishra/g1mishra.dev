@@ -1,0 +1,53 @@
+---
+import { meta, social } from "../data/portfolio";
+
+const socialLabels: Record<string, string> = {
+  github: "GitHub",
+  linkedin: "LinkedIn",
+  twitter: "Twitter",
+  becomingjeevan: "Becoming Jeevan",
+};
+---
+
+<footer class="mx-auto flex w-full max-w-6xl flex-col gap-6 px-5 py-12 text-sm text-muted sm:px-8 mt-10">
+  <!-- Warm divider line -->
+  <div class="h-[1px] w-full bg-gradient-to-r from-border via-amber/20 to-border mb-4"></div>
+  
+  <div class="flex flex-wrap items-center justify-between gap-y-6">
+    <div class="flex flex-wrap gap-x-6 gap-y-3">
+      {
+        Object.entries(social).map(([key, href]) => (
+          <a class="transition-colors hover:text-ink" href={href} target="_blank" rel="noopener noreferrer">
+            {socialLabels[key] ?? key}
+          </a>
+        ))
+      }
+      <a class="transition-colors hover:text-ink" href={`mailto:${meta.email}`}>Email</a>
+      <a class="transition-colors hover:text-ink" href={meta.resumeUrl} target="_blank" rel="noopener noreferrer">Resume</a>
+      <a class="transition-colors hover:text-ink" href="/uses">Uses</a>
+    </div>
+    
+    <button id="back-to-top" class="group flex items-center gap-2 text-muted transition-colors hover:text-amber">
+      <span>Back to top</span>
+      <svg class="h-4 w-4 transition-transform group-hover:-translate-y-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      </svg>
+    </button>
+  </div>
+  
+  <div class="flex items-center justify-between mt-2">
+    <p>© {new Date().getFullYear()} Jeevan Kumar · Built with Astro</p>
+  </div>
+</footer>
+
+<script>
+  function setupBackToTop() {
+    const btn = document.getElementById('back-to-top');
+    btn?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  setupBackToTop();
+  document.addEventListener('astro:page-load', setupBackToTop);
+</script>

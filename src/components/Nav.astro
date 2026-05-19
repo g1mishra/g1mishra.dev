@@ -1,0 +1,127 @@
+---
+import { meta } from "../data/portfolio";
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<header class="sticky top-0 z-40 mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 sm:px-8 transition-all duration-300" id="main-nav">
+  <div class="absolute inset-0 -z-10 backdrop-blur-md bg-paper/90 border-b border-transparent transition-colors duration-300" id="nav-bg"></div>
+  
+  <a href="/" class="font-display text-2xl font-semibold tracking-normal transition-transform hover:scale-105 text-ink relative z-20">jeevan</a>
+  
+  <div class="flex items-center gap-3 sm:gap-6 relative z-20">
+    <nav class="hidden sm:flex flex-wrap items-center justify-end gap-x-6 text-sm font-medium text-muted nav-links">
+      <a class="transition-colors hover:text-ink" href="/#work">Work</a>
+      <a class="transition-colors hover:text-ink" href="/#apps">Apps</a>
+      <a class="transition-colors hover:text-ink" href="/#projects">Projects</a>
+      <a class="transition-colors hover:text-ink" href="/#about">About</a>
+      <a class="transition-colors hover:text-ink" href="/uses">Uses</a>
+    </nav>
+    
+    <ThemeToggle />
+    
+    <a
+      class="rounded-full border border-border px-4 py-1.5 text-sm sm:text-base text-ink transition-all hover:border-amber hover:text-amber"
+      href={`mailto:${meta.email}`}
+    >
+      Say Hi →
+    </a>
+
+    <!-- Hamburger Button -->
+    <button id="mobile-menu-btn" class="sm:hidden flex items-center justify-center p-1 text-ink hover:text-amber transition-colors" aria-label="Toggle Menu" aria-expanded="false">
+      <!-- Menu icon -->
+      <svg class="w-6 h-6 menu-open-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <!-- Close icon -->
+      <svg class="w-6 h-6 menu-close-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" class="absolute top-full left-0 right-0 bg-paper/95 backdrop-blur-xl border-b border-border shadow-lg transition-all duration-300 opacity-0 invisible translate-y-[-10px] sm:hidden z-10">
+    <nav class="flex flex-col items-center py-8 gap-y-6 text-base font-medium text-muted nav-links-mobile">
+      <a class="transition-colors hover:text-amber" href="/#work">Work</a>
+      <a class="transition-colors hover:text-amber" href="/#apps">Apps</a>
+      <a class="transition-colors hover:text-amber" href="/#projects">Projects</a>
+      <a class="transition-colors hover:text-amber" href="/#about">About</a>
+      <a class="transition-colors hover:text-amber" href="/uses">Uses</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  function setupNav() {
+    const navBg = document.getElementById('nav-bg');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    // Add border to nav on scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navBg?.classList.replace('border-transparent', 'border-border');
+      } else {
+        navBg?.classList.replace('border-border', 'border-transparent');
+      }
+    });
+
+    // Active state for sections (Intersection Observer)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === `/#${entry.target.id}`) {
+              link.classList.add('!text-amber');
+            } else {
+              link.classList.remove('!text-amber');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -80% 0px' });
+
+    document.querySelectorAll('section[id]').forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const openIcon = document.querySelector('.menu-open-icon');
+    const closeIcon = document.querySelector('.menu-close-icon');
+
+    // Clone button to remove any old listeners in case of page-load re-trigger
+    const newBtn = mobileMenuBtn?.cloneNode(true) as HTMLButtonElement;
+    mobileMenuBtn?.parentNode?.replaceChild(newBtn, mobileMenuBtn);
+
+    function closeMenu() {
+      newBtn?.setAttribute('aria-expanded', 'false');
+      mobileMenu?.classList.add('opacity-0', 'invisible', 'translate-y-[-10px]');
+      mobileMenu?.classList.remove('opacity-100', 'visible', 'translate-y-0');
+      openIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    }
+
+    newBtn?.addEventListener('click', () => {
+      const isExpanded = newBtn.getAttribute('aria-expanded') === 'true';
+      if (isExpanded) {
+        closeMenu();
+      } else {
+        newBtn.setAttribute('aria-expanded', 'true');
+        mobileMenu?.classList.remove('opacity-0', 'invisible', 'translate-y-[-10px]');
+        mobileMenu?.classList.add('opacity-100', 'visible', 'translate-y-0');
+        openIcon?.classList.add('hidden');
+        closeIcon?.classList.remove('hidden');
+      }
+    });
+
+    const mobileLinks = mobileMenu?.querySelectorAll('a');
+    mobileLinks?.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  setupNav();
+  document.addEventListener('astro:page-load', setupNav);
+</script>

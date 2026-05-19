@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Uses - Jeevan Kumar">
+	<Nav />
+	
+	<main class="mx-auto w-full max-w-3xl px-5 py-12 sm:px-8 sm:py-20" transition:animate="slide">
+		<a class="font-mono text-xs font-semibold uppercase tracking-[0.12em] text-amber hover:text-amber-light transition-colors" href="/">← Back home</a>
+		
+		<h1 class="mt-10 font-display text-6xl font-semibold leading-none sm:text-7xl text-ink reveal">Uses</h1>
+		<p class="mt-6 text-xl leading-8 text-muted reveal" style="animation-delay: 0.1s">
+			The daily stack, tools, and gear I keep close while building software and small products.
+		</p>
+
+		<div class="mt-16 space-y-16 text-lg leading-8 reveal" style="animation-delay: 0.2s">
+			<section class="group">
+				<h2 class="font-display text-3xl font-semibold text-ink flex items-center gap-4">
+					<span class="text-amber">01.</span> Daily Stack
+				</h2>
+				<ul class="mt-6 list-disc space-y-3 pl-5 text-muted/90 group-hover:text-ink/90 transition-colors duration-500">
+					<li><strong class="text-ink font-medium">Core:</strong> TypeScript, React, Next.js, Astro</li>
+					<li><strong class="text-ink font-medium">Mobile:</strong> React Native, Expo</li>
+					<li><strong class="text-ink font-medium">Styling:</strong> Tailwind CSS for interfaces that need to ship cleanly</li>
+					<li><strong class="text-ink font-medium">Backend:</strong> Node.js, Python, Django, MongoDB, SQLite</li>
+				</ul>
+			</section>
+
+			<section class="group">
+				<h2 class="font-display text-3xl font-semibold text-ink flex items-center gap-4">
+					<span class="text-amber">02.</span> IDE & Tools
+				</h2>
+				<ul class="mt-6 list-disc space-y-3 pl-5 text-muted/90 group-hover:text-ink/90 transition-colors duration-500">
+					<li><strong class="text-ink font-medium">Editors & AI:</strong> CodeX, Claude Code, VS Code, Cursor</li>
+					<li><strong class="text-ink font-medium">Version Control:</strong> GitHub for source control and project memory</li>
+					<li><strong class="text-ink font-medium">Hosting:</strong> Vercel for personal web projects</li>
+					<li><strong class="text-ink font-medium">Design:</strong> Figma when the product needs a cleaner first pass</li>
+				</ul>
+			</section>
+
+			<section class="group">
+				<h2 class="font-display text-3xl font-semibold text-ink flex items-center gap-4">
+					<span class="text-amber">03.</span> Gear
+				</h2>
+				<ul class="mt-6 list-disc space-y-3 pl-5 text-muted/90 group-hover:text-ink/90 transition-colors duration-500">
+					<li><strong class="text-ink font-medium">Phone:</strong> iPhone 15 Pro Max</li>
+					<li class="text-muted italic">A plain setup tuned for writing code, recording ideas, and keeping momentum.</li>
+				</ul>
+			</section>
+		</div>
+	</main>
+	
+	<Footer />
+</Layout>
