@@ -11,11 +11,11 @@ interface Props {
 
 const {
 	title = "Jeevan Kumar - Software Engineer, Indie Developer, Creator",
-	description = "Personal portfolio for Jeevan Kumar, a software engineer and indie developer based in Punjab, India.",
+	description = "Personal portfolio of Jeevan Kumar, a Software Engineer and Indie Developer from India. I build modern, scalable web and mobile products.",
 	ogImage = "/og-image.png"
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, "https://g1mishra.dev");
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const personSchema = {
 	"@context": "https://schema.org",
@@ -50,13 +50,13 @@ const personSchema = {
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={new URL(ogImage, Astro.url)} />
+		<meta property="og:image" content={new URL(ogImage, Astro.site)} />
 
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={canonicalURL} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
+		<meta property="twitter:image" content={new URL(ogImage, Astro.site)} />
 
 		<ClientRouter />
 
