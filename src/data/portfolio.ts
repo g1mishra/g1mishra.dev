@@ -123,7 +123,7 @@ export const apps: App[] = [
       "A digital mala counter for daily naam jaap — built for people who actually do the practice. Volume button counting, custom malas, streaks, smart reminders. No account, no ads, works offline. Built solo.",
     tags: ["React Native", "Expo", "SQLite"],
     links: {
-      playStore: "https://play.google.com/...",
+      playStore: "https://play.google.com/store/apps/details?id=com.g1mishra.jaapmitra",
       landing: "https://jaapmitra.g1mishra.dev",
     },
   },
