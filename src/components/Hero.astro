@@ -15,11 +15,12 @@ import jeevanPhoto from "../assets/jeevan-photo.png";
               <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
             </span>
-            Open to work — remote or relocation
+            Open to work · remote or relocation
           </p>
         )
       }
       <h1 class="font-display text-[clamp(2.75rem,6vw,5rem)] font-semibold leading-[1.05] tracking-normal text-ink reveal" style="animation-delay: 0.1s">
+        <span class="sr-only">Jeevan Kumar</span>
         {meta.tagline}
       </h1>
       <p class="mt-8 max-w-2xl text-xl leading-8 text-muted sm:text-2xl sm:leading-9 reveal" style="animation-delay: 0.2s">
@@ -50,6 +51,7 @@ import jeevanPhoto from "../assets/jeevan-photo.png";
           class="w-full h-full object-cover rounded-2xl border border-border shadow-xl filter contrast-105"
           width={400}
           height={500}
+          loading="eager"
         />
       </div>
     </div>

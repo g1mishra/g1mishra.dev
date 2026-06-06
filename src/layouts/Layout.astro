@@ -23,6 +23,9 @@ const personSchema = {
 	name: meta.name,
 	url: "https://g1mishra.dev",
 	jobTitle: "Software Engineer",
+	description: meta.subline,
+	image: new URL(ogImage, Astro.site).toString(),
+	knowsAbout: ["Software Engineering", "Web Development", "TypeScript", "React", "Next.js", "Astro", "React Native", "Mobile Development"],
 	sameAs: Object.values(social)
 };
 ---
@@ -32,8 +35,12 @@ const personSchema = {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" href="/favicon.ico" sizes="32x32" />
+		<link rel="icon" href="/favicon.ico" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="/favicon.ico" />
+		<link rel="manifest" href="/manifest.json" />
+		<meta name="theme-color" content="#e8940a" />
+		<meta name="author" content={meta.name} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -52,11 +59,11 @@ const personSchema = {
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={new URL(ogImage, Astro.site)} />
 
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={canonicalURL} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={new URL(ogImage, Astro.site)} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
 
 		<ClientRouter />
 

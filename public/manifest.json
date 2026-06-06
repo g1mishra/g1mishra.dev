@@ -1,0 +1,16 @@
+{
+  "name": "Jeevan Kumar",
+  "short_name": "Jeevan",
+  "description": "Personal portfolio of Jeevan Kumar, a Software Engineer and Indie Developer from India.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f4ee",
+  "theme_color": "#e8940a",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32",
+      "type": "image/x-icon"
+    }
+  ]
+}

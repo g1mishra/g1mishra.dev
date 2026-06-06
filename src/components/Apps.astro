@@ -2,66 +2,75 @@
 import { apps } from "../data/portfolio";
 import { Image } from "astro:assets";
 import jaapmitraFeature from "../assets/jaapmitra-feature.png";
+import saarthiFeature from "../assets/saarthi-feature.png";
 
-// Find JaapMitra from the apps array
-const jaapMitra = apps.find(a => a.name === "JaapMitra");
+const appImages: Record<string, any> = {
+  "JaapMitra": jaapmitraFeature,
+  "Saarthi": saarthiFeature,
+};
 
 const linkLabels: Record<string, string> = {
   playStore: "Play Store →",
   landing: "Landing →",
+  live: "Live App →",
 };
 ---
 
 <section id="apps" class="reveal scroll-mt-24 border-b border-border py-16 sm:py-24">
-  <h2 class="mb-12 font-display text-4xl sm:text-5xl font-semibold text-ink">Apps</h2>
+  <h2 class="mb-10 font-display text-4xl sm:text-5xl font-semibold text-ink">Apps</h2>
   
-  {jaapMitra && (
-    <article class="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-paper via-paper to-amber-light/30 shadow-sm transition-shadow duration-500 hover:shadow-md group">
-      
-      <!-- Background glow effect on hover -->
-      <div class="absolute inset-0 bg-amber-light opacity-0 transition-opacity duration-500 group-hover:opacity-20 pointer-events-none"></div>
-      
-      <div class="grid gap-10 sm:grid-cols-[1fr_1.2fr] items-center p-8 sm:p-12 lg:p-16">
+  <div class="flex flex-col gap-12">
+    {apps.map((app) => (
+      <article class="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-paper via-paper to-amber-light/30 shadow-sm transition-shadow duration-500 hover:shadow-md group">
         
-        <div class="relative z-10">
-          <h3 class="font-display text-3xl sm:text-4xl font-semibold text-ink">{jaapMitra.name}</h3>
-          <p class="mt-5 text-lg leading-8 text-muted">{jaapMitra.description}</p>
+        <!-- Background glow effect on hover -->
+        <div class="absolute inset-0 bg-amber-light opacity-0 transition-opacity duration-500 group-hover:opacity-20 pointer-events-none"></div>
+        
+        <div class="grid gap-8 sm:grid-cols-[1fr_1fr] items-center p-7 sm:p-10 lg:p-12">
           
-          <div class="mt-8 flex flex-wrap gap-3">
-            {jaapMitra.tags.map((tag) => (
-              <span class="font-mono text-xs font-semibold uppercase tracking-widest text-muted bg-card border border-border px-3 py-1.5 rounded-full">
-                {tag}
-              </span>
-            ))}
+          <div class="relative z-10">
+            <h3 class="font-display text-3xl sm:text-4xl font-semibold text-ink">{app.name}</h3>
+            <p class="mt-4 text-lg leading-8 text-muted">{app.description}</p>
+            
+            <div class="mt-6 flex flex-wrap gap-3">
+              {app.tags.map((tag) => (
+                <span class="font-mono text-xs font-semibold uppercase tracking-widest text-muted bg-card border border-border px-3 py-1.5 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <div class="mt-8 flex flex-wrap gap-5 text-sm font-semibold">
+              {Object.entries(app.links).map(([key, href]) => (
+                <a
+                  class="inline-flex items-center justify-center rounded-full bg-ink px-6 py-2.5 !text-paper transition hover:bg-ink/80 hover:scale-105"
+                  href={href as string}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {linkLabels[key] ?? key}
+                </a>
+              ))}
+            </div>
           </div>
-          
-          <div class="mt-10 flex flex-wrap gap-6 text-sm font-semibold">
-            {Object.entries(jaapMitra.links).map(([key, href]) => (
-              <a
-                class="inline-flex items-center justify-center rounded-full bg-ink px-6 py-2.5 !text-paper transition hover:bg-ink/80 hover:scale-105"
-                href={href as string}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {linkLabels[key] ?? key}
-              </a>
-            ))}
-          </div>
-        </div>
 
-        <div class="relative z-10 mt-8 sm:mt-0 flex justify-center sm:justify-end animate-float">
-          <div class="relative w-full max-w-sm rounded-2xl overflow-hidden border border-border/50 shadow-2xl rotate-2 transition-transform duration-700 group-hover:rotate-0 group-hover:scale-105">
-            <Image 
-              src={jaapmitraFeature} 
-              alt="JaapMitra App Feature Graphic" 
-              class="w-full h-auto object-cover"
-              width={800}
-              height={400}
-            />
+          <div class="relative z-10 mt-6 sm:mt-0 flex justify-center sm:justify-end animate-float">
+            <div class="relative w-full max-w-sm rotate-2 transition-transform duration-700 group-hover:rotate-0 group-hover:scale-105">
+              {appImages[app.name] && (
+                <Image 
+                  src={appImages[app.name]} 
+                  alt={`${app.name} App Feature Graphic`} 
+                  class="w-full h-full rounded-2xl shadow-xl object-contain"
+                  width={800}
+                  height={400}
+                  loading="lazy"
+                />
+              )}
+            </div>
           </div>
+          
         </div>
-        
-      </div>
-    </article>
-  )}
+      </article>
+    ))}
+  </div>
 </section>
