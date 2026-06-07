@@ -124,7 +124,7 @@ export const apps: App[] = [
     tags: ["React Native", "Expo", "SQLite"],
     links: {
       playStore: "https://play.google.com/store/apps/details?id=com.g1mishra.jaapmitra",
-      landing: "https://jaapmitra.g1mishra.dev",
+      landing: "https://jaapmitra.jeevanmishra.in",
     },
   },
   {
@@ -134,7 +134,7 @@ export const apps: App[] = [
     tags: ["React Native", "Next.js", "Expo"],
     links: {
       playStore: "https://play.google.com/store/apps/details?id=com.g1mishra.saarthi",
-      landing: "https://saarthi.g1mishra.dev",
+      landing: "https://saarthi.jeevanmishra.in",
     },
   },
 ];

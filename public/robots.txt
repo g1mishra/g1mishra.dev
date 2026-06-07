@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://g1mishra.dev/sitemap-index.xml
+Sitemap: https://jeevanmishra.in/sitemap-index.xml

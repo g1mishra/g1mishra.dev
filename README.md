@@ -71,7 +71,7 @@ All commands are executed from the root of the project using a terminal:
 
 ## 🤝 Connect With Me
 
-- **Website:** [g1mishra.dev](https://g1mishra.dev)
+- **Website:** [jeevanmishra.in](https://jeevanmishra.in)
 - **GitHub:** [@g1mishra](https://github.com/g1mishra)
 - **LinkedIn:** [Jeevan Kumar](https://linkedin.com/in/g1mishra)
 - **Twitter:** [@g1mishra](https://twitter.com/g1mishra)
